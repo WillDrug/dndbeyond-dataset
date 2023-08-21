@@ -149,7 +149,8 @@ class CharacterClass:
 class Character:
     def __init__(self, num: int, char_id: int, name: str, base_hp: int, strength: int, dexterity: int,
                  constitution: int, intelligence: int, wisdom: int, charisma: int, background: Optional[Background],
-                 race: Race, feats: list[Feat], inventory: list[Item], date_modified: struct_time, notes_len: int,  # todo int
+                 race: Race, feats: list[Feat], inventory: list[Item], date_modified: struct_time, notes_len: int,
+                 # todo int
                  gold: float, base_class: CharacterClass, extra_classes: list[CharacterClass], total_level: int,
                  base_level: int):
         self.num = int(num)
@@ -180,10 +181,14 @@ class Character:
             extra = f' / {", ".join([str(q) for q in self.extra_classes])} ({self.total_level})'
         return f'{self.name}: {self.base_class} ({self.base_level}) {extra}'
 
-if __name__ == '__main__':
+
+def load_dataset():
     with bz2.BZ2File('characters.pcl.bz2', 'rb') as f:
         gc.disable()
         data = pickle.load(f)
         gc.enable()
+    return data
 
-    print(data[0])
+
+if __name__ == '__main__':
+    data = load_dataset()
