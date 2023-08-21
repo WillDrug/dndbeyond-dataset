@@ -86,7 +86,7 @@ class Feat:
 
 
 class Item:
-    def __init__(self, name, bonus=None, value_gp=None, base_item=None, special='', original_name=''):
+    def __init__(self, name, bonus=None, value_gp=None, base_item=None, special=''):
         self.name = name
         self.bonus = bonus
         self.value_gp = value_gp
